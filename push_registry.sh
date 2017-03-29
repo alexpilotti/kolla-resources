@@ -3,7 +3,7 @@
 # This script pulls OpenStack images from Clodbase repo and pushes them to a local registry server
 
 # pull images
-for image in `docker search cloudbaseit | awk '{print $1}'| sed -n '/cloudbaseit/p'`; do echo $image; done
+for image in `docker search cloudbaseit | awk '{print $1}'| sed -n '/cloudbaseit/p'`; do docker pull $image:3.0.2; done
 
 # push images
 docker images | sed -n '/cloudbaseit/p' | while read -r line
